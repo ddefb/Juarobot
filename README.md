@@ -4,7 +4,7 @@
 <a href="http://www.ppgia.ufrpe.br/" target="_blank">Master's Degree Programme in Applied Informatics</a><br/>
 <a href="https://jualabs.wordpress.com/" target="_blank">Computational Infrastructure Research Laboratory</a><br/>
 
-Discrete Event System applied to the synthesis of a robot.
+Discrete Control Synthesis applied to the automatic synthesis of a robot.
 
 ## Clone
 

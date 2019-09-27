@@ -1,19 +1,19 @@
-/* --- Generated the 27/2/2019 at 8:32 --- */
+/* --- Generated the 27/9/2019 at 14:38 --- */
 /* --- heptagon compiler, version 1.03.00 (compiled thu. may. 3 2:35:29 CET 2018) --- */
-/* --- Command line: /usr/local/bin/heptc -target c -target z3z -s controller robo.ept --- */
+/* --- Command line: /usr/local/bin/heptc -target c -target z3z -s controller robot.ept --- */
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "robo.h"
+#include "robot.h"
 
-void Robo__obstacle_reset(Robo__obstacle_mem* self) {
+void Robot__obstacle_reset(Robot__obstacle_mem* self) {
   self->pnr = false;
   self->ck_1_2 = false;
 }
 
-void Robo__obstacle_step(int sensor, Robo__obstacle_out* _out,
-                         Robo__obstacle_mem* self) {
+void Robot__obstacle_step(int sensor, Robot__obstacle_out* _out,
+                          Robot__obstacle_mem* self) {
   
   int nr_St_NO_OBSTACLE;
   int ns_St_NO_OBSTACLE_1;
@@ -78,13 +78,13 @@ void Robo__obstacle_step(int sensor, Robo__obstacle_out* _out,
   self->ck_1_2 = ns_1;;
 }
 
-void Robo__motor_reset(Robo__motor_mem* self) {
+void Robot__motor_reset(Robot__motor_mem* self) {
   self->pnr = false;
   self->ck_1 = false;
 }
 
-void Robo__motor_step(int c_motor, Robo__motor_out* _out,
-                      Robo__motor_mem* self) {
+void Robot__motor_step(int c_motor, Robot__motor_out* _out,
+                       Robot__motor_mem* self) {
   
   int nr_St_1_BACKWARD_STATE;
   int ns_St_1_BACKWARD_STATE_1;
@@ -131,16 +131,16 @@ void Robo__motor_step(int c_motor, Robo__motor_out* _out,
   };
   ck_2_1 = s_1;
   if (ck_2_1) {
-    mode_St_1_BACKWARD_STATE = 2;
+    mode_St_1_BACKWARD_STATE = false;
     _out->mode = mode_St_1_BACKWARD_STATE;
-    velocity_St_1_BACKWARD_STATE = 255;
+    velocity_St_1_BACKWARD_STATE = 100;
     _out->velocity = velocity_St_1_BACKWARD_STATE;
     nr_St_1_BACKWARD_STATE = false;
     nr = nr_St_1_BACKWARD_STATE;
     ns_St_1_BACKWARD_STATE_1 = true;
     ns_1 = ns_St_1_BACKWARD_STATE_1;
   } else {
-    mode_St_1_FORWARD_STATE = 1;
+    mode_St_1_FORWARD_STATE = true;
     velocity_St_1_FORWARD_STATE = 255;
     nr_St_1_FORWARD_STATE = false;
     ns_St_1_FORWARD_STATE_1 = false;
@@ -153,15 +153,15 @@ void Robo__motor_step(int c_motor, Robo__motor_out* _out,
   self->ck_1 = ns_1;;
 }
 
-void Robo__moving_or_turning_reset(Robo__moving_or_turning_mem* self) {
+void Robot__moving_or_turning_reset(Robot__moving_or_turning_mem* self) {
   self->mbc_1 = 0;
   self->pnr = false;
   self->v_39 = true;
   self->v_40 = true;
 }
 
-void Robo__moving_or_turning_step(int c, Robo__moving_or_turning_out* _out,
-                                  Robo__moving_or_turning_mem* self) {
+void Robot__moving_or_turning_step(int c, Robot__moving_or_turning_out* _out,
+                                   Robot__moving_or_turning_mem* self) {
   
   int v_5_2_0;
   int v_5_2_1;
@@ -444,7 +444,7 @@ void Robo__moving_or_turning_step(int c, Robo__moving_or_turning_out* _out,
   self->v_40 = ns_2;;
 }
 
-void Robo__controller_reset(Robo__controller_mem* self) {
+void Robot__controller_reset(Robot__controller_mem* self) {
   self->mbc_2 = 0;
   self->pnr = false;
   self->ck_13_1 = false;
@@ -461,8 +461,8 @@ void Robo__controller_reset(Robo__controller_mem* self) {
   self->ck_1 = false;
 }
 
-void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
-                           Robo__controller_mem* self) {
+void Robot__controller_step(int obs_sensor, Robot__controller_out* _out,
+                            Robot__controller_mem* self) {
   Controller_controller__controller_controller_out Controller_controller__controller_controller_out_st;
   
   int nr_St_3_BACKWARD_STATE;
@@ -767,16 +767,16 @@ void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
   };
   ck_14_1 = s_1_2;
   if (ck_14_1) {
-    mode_3_St_3_BACKWARD_STATE = 2;
+    mode_3_St_3_BACKWARD_STATE = false;
     mode_3 = mode_3_St_3_BACKWARD_STATE;
-    velocity_3_St_3_BACKWARD_STATE = 255;
+    velocity_3_St_3_BACKWARD_STATE = 100;
     velocity_3 = velocity_3_St_3_BACKWARD_STATE;
     nr_St_3_BACKWARD_STATE = false;
     nr = nr_St_3_BACKWARD_STATE;
     ns_St_3_BACKWARD_STATE_1 = true;
     ns_1_2 = ns_St_3_BACKWARD_STATE_1;
   } else {
-    mode_3_St_3_FORWARD_STATE = 1;
+    mode_3_St_3_FORWARD_STATE = true;
     velocity_3_St_3_FORWARD_STATE = 255;
     nr_St_3_FORWARD_STATE = false;
     ns_St_3_FORWARD_STATE_1 = false;
@@ -787,7 +787,7 @@ void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
   };
   _out->vel4 = velocity_3;
   _out->motor4 = mode_3;
-  v_14 = (_out->motor4==2);
+  v_14 = (_out->motor4==false);
   if (self->ck_11_1) {
     if (c_motor_2) {
       r_1_St_4_BACKWARD_STATE = true;
@@ -815,16 +815,16 @@ void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
   };
   ck_12_1 = s_1_1;
   if (ck_12_1) {
-    mode_2_St_4_BACKWARD_STATE = 2;
+    mode_2_St_4_BACKWARD_STATE = false;
     mode_2 = mode_2_St_4_BACKWARD_STATE;
-    velocity_2_St_4_BACKWARD_STATE = 255;
+    velocity_2_St_4_BACKWARD_STATE = 100;
     velocity_2 = velocity_2_St_4_BACKWARD_STATE;
     nr_1_St_4_BACKWARD_STATE = false;
     nr_1 = nr_1_St_4_BACKWARD_STATE;
     ns_1_St_4_BACKWARD_STATE_1 = true;
     ns_1_1 = ns_1_St_4_BACKWARD_STATE_1;
   } else {
-    mode_2_St_4_FORWARD_STATE = 1;
+    mode_2_St_4_FORWARD_STATE = true;
     velocity_2_St_4_FORWARD_STATE = 255;
     nr_1_St_4_FORWARD_STATE = false;
     ns_1_St_4_FORWARD_STATE_1 = false;
@@ -835,7 +835,7 @@ void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
   };
   _out->vel3 = velocity_2;
   _out->motor3 = mode_2;
-  v_12 = (_out->motor3==1);
+  v_12 = (_out->motor3==true);
   if (self->ck_9_1) {
     if (c_motor_1) {
       r_2_St_5_BACKWARD_STATE = true;
@@ -863,16 +863,16 @@ void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
   };
   ck_10_1 = s_2_1;
   if (ck_10_1) {
-    mode_1_St_5_BACKWARD_STATE = 2;
+    mode_1_St_5_BACKWARD_STATE = false;
     mode_1 = mode_1_St_5_BACKWARD_STATE;
-    velocity_1_St_5_BACKWARD_STATE = 255;
+    velocity_1_St_5_BACKWARD_STATE = 100;
     velocity_1 = velocity_1_St_5_BACKWARD_STATE;
     nr_2_St_5_BACKWARD_STATE = false;
     nr_2 = nr_2_St_5_BACKWARD_STATE;
     ns_2_St_5_BACKWARD_STATE_1 = true;
     ns_2_1 = ns_2_St_5_BACKWARD_STATE_1;
   } else {
-    mode_1_St_5_FORWARD_STATE = 1;
+    mode_1_St_5_FORWARD_STATE = true;
     velocity_1_St_5_FORWARD_STATE = 255;
     nr_2_St_5_FORWARD_STATE = false;
     ns_2_St_5_FORWARD_STATE_1 = false;
@@ -883,7 +883,7 @@ void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
   };
   _out->vel2 = velocity_1;
   _out->motor2 = mode_1;
-  v_10 = (_out->motor2==2);
+  v_10 = (_out->motor2==false);
   if (self->ck_7_1) {
     if (c_motor) {
       r_3_St_6_BACKWARD_STATE = true;
@@ -911,16 +911,16 @@ void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
   };
   ck_8_1 = s_3_1;
   if (ck_8_1) {
-    mode_St_6_BACKWARD_STATE = 2;
+    mode_St_6_BACKWARD_STATE = false;
     mode = mode_St_6_BACKWARD_STATE;
-    velocity_St_6_BACKWARD_STATE = 255;
+    velocity_St_6_BACKWARD_STATE = 100;
     velocity = velocity_St_6_BACKWARD_STATE;
     nr_3_St_6_BACKWARD_STATE = false;
     nr_3 = nr_3_St_6_BACKWARD_STATE;
     ns_3_St_6_BACKWARD_STATE_1 = true;
     ns_3_1 = ns_3_St_6_BACKWARD_STATE_1;
   } else {
-    mode_St_6_FORWARD_STATE = 1;
+    mode_St_6_FORWARD_STATE = true;
     velocity_St_6_FORWARD_STATE = 255;
     nr_3_St_6_FORWARD_STATE = false;
     ns_3_St_6_FORWARD_STATE_1 = false;
@@ -931,7 +931,7 @@ void Robo__controller_step(int obs_sensor, Robo__controller_out* _out,
   };
   _out->vel1 = velocity;
   _out->motor1 = mode;
-  v_9 = (_out->motor1==1);
+  v_9 = (_out->motor1==true);
   v_11 = (v_9&&v_10);
   v_13 = (v_11&&v_12);
   v_15 = (v_13&&v_14);

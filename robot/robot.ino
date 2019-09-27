@@ -1,7 +1,7 @@
 
 #include <AFMotor.h>
 #include "controller_controller.c"
-#include "robo.c"
+#include "robot.c"
 
 AF_DCMotor motor1(1);
 AF_DCMotor motor2(2);
@@ -20,14 +20,10 @@ void setup() {
     Serial.begin(9600);
 
     Robo__controller_reset(&mem);
-  
-//    pinMode(trig_pin, OUTPUT);
-//    pinMode(echo_pin, INPUT);
-//    digitalWrite(trig_pin, LOW);
-
-      pinMode(A0, OUTPUT);
-      pinMode(A1, INPUT);
-      digitalWrite(A0, LOW);
+  	
+  	pinMode(A0, OUTPUT);
+    pinMode(A1, INPUT);
+    digitalWrite(A0, LOW);
 }
 
 double read_obstacle(){
@@ -38,16 +34,12 @@ double read_obstacle(){
     uint32_t pulse_time = pulseIn(A1, HIGH);     
     double distance = 0.01715 * pulse_time;
 
-    Serial.print("distance ");
-    Serial.print(distance);
-    Serial.println(" cm");
-   
     return distance;
 }
 
 void loop() {
     obs_sensor = read_obstacle();
-    Robo__controller_step(obs_sensor, &_res, &mem);
+    Robot__controller_step(obs_sensor, &_res, &mem);
 
     motor1.setSpeed(_res.vel1);
     motor1.run(_res.motor1);
@@ -57,23 +49,6 @@ void loop() {
     motor3.run(_res.motor3);
     motor4.setSpeed(_res.vel4);
     motor4.run(_res.motor4);
-
-    Serial.print("obstacle ");
-    Serial.println(_res.obs);
-    Serial.print("turning ");
-    Serial.println(_res.turning);
-    Serial.print("motor1 ");
-    Serial.println(_res.motor1);
-    Serial.print("motor2 ");
-    Serial.println(_res.motor2);
-    Serial.print("motor3 ");
-    Serial.println(_res.motor3);
-    Serial.print("motor4 ");
-    Serial.println(_res.motor4);
-    Serial.print("contador ");
-    Serial.println(_res.cont);
-    Serial.println("");
-    
     delay(10);
 }
 

@@ -1,5 +1,5 @@
 
-SIM_PROG=robo
+SIM_PROG=robot
 SIM_MOD=Controller
 SIM_NODE=controller
 CONTRACT_NODE=controller

@@ -13,13 +13,13 @@ AF_DCMotor motor4(4);
 
 int obs_sensor;
 
-Robo__controller_mem mem;
-Robo__controller_out _res;
+Robot__controller_mem mem;
+Robot__controller_out _res;
 
 void setup() {
     Serial.begin(9600);
 
-    Robo__controller_reset(&mem);
+    Robot__controller_reset(&mem);
   	
   	pinMode(A0, OUTPUT);
     pinMode(A1, INPUT);

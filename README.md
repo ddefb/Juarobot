@@ -4,50 +4,13 @@
 <a href="http://www.ppgia.ufrpe.br/" target="_blank">Master's Degree Programme in Applied Informatics</a><br/>
 <a href="https://jualabs.wordpress.com/" target="_blank">Computational Infrastructure Research Laboratory</a><br/>
 
-Discrete Control Synthesis applied to the automatic synthesis of a robot.
+This repository presents the modeling of a controller based on the Supervisory Control Theory. After modeling in <a href="http://heptagon.gforge.inria.fr/pub/heptagon-manual.pdf" target="_blank">BZR language</a>, the controller was synthesized using the <a href="http://heptagon.gforge.inria.fr/" target="_blank">Heptagon/BZR</a> and <a href="http://www.irisa.fr/vertecs/Logiciels/sigali.html" target="_blank">Sigali</a> tools. The controller was deployed in an Arduino UNO to control the movement of a 4WD Robot Car using a distance sensor (SR-04).
 
-## Clone
+A tutorial for the development process is presented in our web <a href="https://jualabs.wordpress.com/2019/03/14/programacao-de-veiculos-autonomos-com-linguagem-bzr-parte-1/" target="_blank">site</a> (Portuguese).
 
-> clone this repo to your local machine using 
+## Robot
 
-```shell
-$ git clone `https://github.com/ddefb/JUAROBOT.git`
-```
-
-## Setup
-
-For run this project you need install the Heptagon/BZR and download the Sigali tool. The links below provide tutorials for doing this step:
-
-- Tutorial 1 (<a href="http://heptagon.gforge.inria.fr/" target="_blank">English</a>) by <a href="http://heptagon.gforge.inria.fr/" target="_blank">INRIA</a> group;
-- Tutorial 2 (<a href="https://jualabs.wordpress.com/2016/04/08/instalacao-do-heptagon-no-ubuntu-14-04/" target="_blank">Portuguese</a>) by <a href="https://jualabs.wordpress.com" target="_blank">Juá Labs</a> group.
-
-## Build from model and run the binary file
-
-> go to JUAROBOT/model folder
-
-```shell
-$ cd ~/JUAROBOT/model
-```
-
-> and run the make command:
-
-```shell
-$ make
-```
-
-> run the command above to execute the binary file:
-
-```shell 
-$ ./controller_sim
-```
-
-The source files to run with the arduino are in the folder JUAROBOT/robot. 
-
-> go to JUAROBOT/robot folder
-
-```shell
-$ cd ~/JUAROBOT/robot
-```
+![Robot photo](robot.jpg)
 
 ---
 

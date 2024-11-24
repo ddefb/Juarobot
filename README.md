@@ -6,7 +6,7 @@
 
 This repository presents the modeling of a controller based on the Supervisory Control Theory. After modeling in <a href="http://heptagon.gforge.inria.fr/pub/heptagon-manual.pdf" target="_blank">BZR language</a>, the controller was synthesized using the <a href="http://heptagon.gforge.inria.fr/" target="_blank">Heptagon/BZR</a> and <a href="http://www.irisa.fr/vertecs/Logiciels/sigali.html" target="_blank">Sigali</a> tools. The controller was deployed in an Arduino UNO to control the movement of a 4WD Robot Car using a distance sensor (SR-04).
 
-A tutorial for the development process is presented in our web <a href="https://jualabs.wordpress.com/2019/03/14/programacao-de-veiculos-autonomos-com-linguagem-bzr-parte-1/" target="_blank">site</a> (Portuguese).
+A tutorial for the development process is presented in our <a href="https://jualabs.wordpress.com/2019/03/14/programacao-de-veiculos-autonomos-com-linguagem-bzr-parte-1/" target="_blank">website</a> (Portuguese).
 
 ## Robot
 
